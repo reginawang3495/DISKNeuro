@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:tr='urn:import:org.diskproject.client.components.triples'
+	xmlns:loi='urn:import:org.diskproject.client.components.loi'
+	xmlns:p='urn:import:com.vaadin.polymer.paper.widget' >
+	<g:HTMLPanel>
+		<style>
+			paper-icon-button.smallicon {
+				width: 32px;
+				height: 32px;
+				text-align: center;
+			}	
+			vaadin-combo-box.no-label,
+			paper-input.no-label {
+				width: 50%;
+			}
+			vaadin-combo-box.no-label .floated-label-placeholder,
+			vaadin-combo-box.no-label .label-is-floating label            
+			{
+				display: none;
+			}
+		</style>
+		<div class="vertical center-justified layout">
+			<paper-input label="Short Description" required="true" 
+				autoValidate="true" ui:field="name" />
+			<paper-textarea label="Long Description" required="true"
+				autoValidate="true" ui:field="description" />
+
+			<label class="small-grey">Hypothesis Pattern (Ctrl-Space for suggestions)</label>
+			<tr:SparqlInput ui:field="hypothesisQuery" />
+
+			<label class="small-grey">Data Query Pattern (Ctrl-Space for suggestions)</label>
+			<tr:SparqlInput ui:field="dataQuery" />
+			
+			<loi:LOIWorkflowList ui:field="workflowlist" 
+				metamode="false" label="Workflows to Run"/>
+
+			<loi:LOIWorkflowList ui:field="metaworkflowlist" 
+				metamode="true" label="Meta-Workflows to Run" />
+
+		</div>
+		<div class="horizontal end-justified layout">
+			<p:PaperButton ui:field="savebutton">
+				<iron-icon icon="save" />
+				Save
+			</p:PaperButton>
+		</div>
+
+	</g:HTMLPanel>
+
+</ui:UiBinder>
